@@ -7,7 +7,6 @@
       background-image: url("../img/marquee.png");
       vertical-align: middle;
       background-size: cover;
-
   }
 
   &__expand--plus {
@@ -15,6 +14,7 @@
       background-size: cover;
       cursor: pointer;
   }
+
   &__expand--minus {
     background-image: url('../img/marquee-minus.png');
     background-size: cover;
@@ -22,9 +22,10 @@
   }
 
   &__item {
-      border-bottom: 1px solid #cccccc;
-      line-height: 28px;
-      vertical-align: middle;
+    position: relative;
+    border-bottom: 1px solid #cccccc;
+    line-height: 28px;
+    vertical-align: middle;
   }
 
   &__content {
@@ -32,4 +33,51 @@
       line-height: 28px;
       vertical-align: middle;
   }
+
+  &__panel {
+    position: absolute;
+    width: 70px;
+    height: 24px;
+    background-color: #cccccc;
+    right: -5px;
+    top: 2px;
+    border-radius: 6px 0 0 6px;
+    transform: translateX(68px);
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateX(0);
+    }
+  }
+
+  &__add{
+    display: inline-block;
+    margin-left: 7px;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    background-image: url('../img/document.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  &__edit{
+    display: inline-block;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    background-image: url('../img/compose-4.png');
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  &__rm{
+    display: inline-block;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    background-image: url('../img/bin-3.png');
+    cursor: pointer;
+  }
+
 }

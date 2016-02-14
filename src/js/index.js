@@ -1,5 +1,6 @@
 import { dataTree } from './defaultTree';
 import Tree from './Tree';
 
-const a = new Tree(dataTree, container);
-a.init();
+const target = document.getElementById('container');
+const tree = new Tree(dataTree, target);
+tree.init();
