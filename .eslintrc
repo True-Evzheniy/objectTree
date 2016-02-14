@@ -6,6 +6,7 @@
     "node": true
   },
   "rules": {
+    ”comma-dangle": 0,
     "quotes": [2, "single"],
     "eol-last": [0],
     "no-mixed-requires": [0],

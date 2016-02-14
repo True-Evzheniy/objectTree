@@ -1,28 +1,36 @@
 .tree {
   &__expand {
       display: inline-block;
+      margin-right: 10px;
       width: 20px;
-      // background-color: $expand-color;
       height: 20px;
       cursor: pointer;
-      background-image: url("../img/marquee.png")
+      background-image: url("../img/marquee.png");
+      vertical-align: middle;
+      background-size: cover;
+
   }
 
-  &__expand--open {
-      background-color: $expend-open-color;
+  &__expand--plus {
+      background-image: url('../img/marquee-plus.png');
+      background-size: cover;
+      cursor: pointer;
+  }
+  &__expand--minus {
+    background-image: url('../img/marquee-minus.png');
+    background-size: cover;
+    cursor: pointer;
   }
 
   &__item {
       border-bottom: 1px solid #cccccc;
-  }
-
-  &__item:after {
-      content: '';
-      display: table;
-      clear: both;
+      line-height: 28px;
+      vertical-align: middle;
   }
 
   &__content {
       display: inline-block;
+      line-height: 28px;
+      vertical-align: middle;
   }
 }
