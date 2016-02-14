@@ -1,0 +1,28 @@
+.tree {
+  &__expand {
+      display: inline-block;
+      width: 20px;
+      // background-color: $expand-color;
+      height: 20px;
+      cursor: pointer;
+      background-image: url("../img/marquee.png")
+  }
+
+  &__expand--open {
+      background-color: $expend-open-color;
+  }
+
+  &__item {
+      border-bottom: 1px solid #cccccc;
+  }
+
+  &__item:after {
+      content: '';
+      display: table;
+      clear: both;
+  }
+
+  &__content {
+      display: inline-block;
+  }
+}
