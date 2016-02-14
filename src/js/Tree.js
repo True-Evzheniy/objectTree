@@ -98,12 +98,14 @@ export default class Tree {
   createChildItem(treeItem, nameNewChildItem) {
     const li = treeItem.parentNode;
     if (li.lastElementChild.tagName !== 'UL') {
+      treeItem.children[0].classList.add('tree__expand--minus');
       const ul = document.createElement('UL');
       const newElem = this.createItem(nameNewChildItem);
       ul.appendChild(newElem);
       li.appendChild(ul);
       newElem.children[0].style.paddingLeft = this.getPadding(newElem.children[0]);
     } else {
+      // debugger;
       const newElem = this.createItem(nameNewChildItem);
       li.lastElementChild.appendChild(newElem);
       newElem.children[0].style.paddingLeft = this.getPadding(newElem.children[0]);
