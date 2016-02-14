@@ -1,8 +1,8 @@
-export default class Tree{
+export default class Tree {
   constructor(data, container) {
     this.dataTree = data;
     this.container = container;
-  };
+  }
 
   isEmpty(obj) {
     return !Object.keys(obj).length;
@@ -14,16 +14,15 @@ export default class Tree{
 
   createTreeDOM(obj) {
     if (this.isEmpty(obj)) return;
-    let ul = document.createElement('ul');
+    const ul = document.createElement('ul');
 
     Object.keys(obj).map(key => {
-      let li, expand, content,item;
-      li = document.createElement('li');
-      item = document.createElement('div');
+      const li = document.createElement('li');
+      const item = document.createElement('div');
       item.classList.add('tree__item');
-      expand = document.createElement('div');
+      const expand = document.createElement('div');
       expand.classList.add('tree__expand');
-      content = document.createElement('div');
+      const content = document.createElement('div');
       content.classList.add('tree__content');
       li.appendChild(item).appendChild(expand);
       item.appendChild(content);
@@ -37,7 +36,7 @@ export default class Tree{
     });
 
     return ul;
-  };
+  }
 
   init() {
     this.createTree(this.dataTree, this.container);
@@ -53,14 +52,14 @@ export default class Tree{
       e.target.parentNode.nextSibling.classList.toggle('hidden');
     });
 
-    let arrItems = [].slice.call(this.container.querySelectorAll('.tree__item'));
+    const arrItems = [].slice.call(this.container.querySelectorAll('.tree__item'));
     arrItems.map((item, i) => {
       let count = 0;
-      while (item.parentNode != this.container) {
+      while (item.parentNode !== this.container) {
         count ++;
         item = item.parentNode;
       }
-      arrItems[i].style.paddingLeft = 10 * count + 'px';
+      arrItems[i].style.paddingLeft = `${count * 10}px`;
     });
   }
 }
