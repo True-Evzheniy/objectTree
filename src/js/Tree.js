@@ -84,6 +84,13 @@ export default class Tree {
       const name = prompt('Имя нового элемента');
       this.createChildItem(item, name);
     });
+
+    this.container.addEventListener('click', (e) => {
+      const target = e.target;
+      if(!target.classList.contains('tree__rm')) return;
+      const item = target.closest('.tree__item');
+      this.deleteElem(item);
+    });
   }
 
   getPadding(item) {
@@ -105,10 +112,20 @@ export default class Tree {
       li.appendChild(ul);
       newElem.children[0].style.paddingLeft = this.getPadding(newElem.children[0]);
     } else {
-      // debugger;
       const newElem = this.createItem(nameNewChildItem);
       li.lastElementChild.appendChild(newElem);
       newElem.children[0].style.paddingLeft = this.getPadding(newElem.children[0]);
     }
+  }
+
+  deleteElem(elem) {
+    const ul = elem.closest('UL');
+    if (ul.children.length === 1) {
+      ul.previousSibling.children[0].classList.remove('tree__expand--minus');
+      ul.remove();
+    } else {
+      elem.parentNode.remove();
+    }
+
   }
 }
