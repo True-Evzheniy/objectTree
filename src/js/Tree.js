@@ -59,7 +59,12 @@ export default class Tree {
   }
 
   init() {
-    this.createTree(this.dataTree, this.container);
+    if (localStorage.html) {
+      this.container.innerHTML = localStorage.html;
+    } else {
+      this.createTree(this.dataTree, this.container);
+    }
+
     this.container.addEventListener('click', (e) => {
       if(!e.target.classList.contains('tree__expand') || !e.target.parentNode.nextSibling) return;
       if(e.target.classList.contains('tree__expand--plus')) {
@@ -70,6 +75,7 @@ export default class Tree {
         e.target.classList.add('tree__expand--plus');
       }
       e.target.parentNode.nextSibling.classList.toggle('tree__hidden');
+      this.updateLs();
     });
 
     const arrItems = [].slice.call(this.container.querySelectorAll('.tree__item'));
@@ -83,6 +89,7 @@ export default class Tree {
       const item = target.closest('.tree__item');
       const name = prompt('Имя нового элемента');
       this.createChildItem(item, name);
+      this.updateLs();
     });
 
     this.container.addEventListener('click', (e) => {
@@ -90,6 +97,7 @@ export default class Tree {
       if(!target.classList.contains('tree__rm')) return;
       const item = target.closest('.tree__item');
       this.deleteElem(item);
+      this.updateLs();
     });
 
     this.container.addEventListener('click', (e) => {
@@ -97,6 +105,7 @@ export default class Tree {
       if(!target.classList.contains('tree__edit')) return;
       const item = target.closest('.tree__item');
       this.editElem(item);
+      this.updateLs();
     });
   }
 
@@ -138,5 +147,9 @@ export default class Tree {
   editElem(elem) {
     const content = elem.children[1];
     content.innerHTML = prompt('Новое имя элемента');
+  }
+
+  updateLs() {
+    localStorage.html = this.container.innerHTML;
   }
 }
