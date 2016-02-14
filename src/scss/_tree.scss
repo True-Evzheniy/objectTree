@@ -1,4 +1,13 @@
 .tree {
+  &__container{
+    display: inline-block;
+    padding: 5px;
+    min-width: 200px;
+    border: 1px solid gray;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
   &__expand {
       display: inline-block;
       margin-right: 10px;
@@ -50,7 +59,7 @@
     }
   }
 
-  &__add{
+  &__add {
     display: inline-block;
     margin-left: 7px;
     margin-right: 5px;
@@ -61,7 +70,7 @@
     cursor: pointer;
   }
 
-  &__edit{
+  &__edit {
     display: inline-block;
     margin-right: 5px;
     width: 16px;
@@ -71,7 +80,7 @@
     cursor: pointer;
   }
 
-  &__rm{
+  &__rm {
     display: inline-block;
     margin-right: 5px;
     width: 16px;
@@ -80,4 +89,13 @@
     cursor: pointer;
   }
 
+  &__hidden {
+    display: none;
+  }
+
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }

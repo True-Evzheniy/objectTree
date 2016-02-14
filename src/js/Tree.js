@@ -9,7 +9,9 @@ export default class Tree {
   }
 
   createTree(obj, box) {
-    box.appendChild(this.createTreeDOM(obj));
+    const container = document.createElement('div');
+    container.classList.add('tree__container');
+    box.appendChild(container).appendChild(this.createTreeDOM(obj));
   }
 
   createItem(key) {
@@ -67,17 +69,21 @@ export default class Tree {
         e.target.classList.remove('tree__expand--minus');
         e.target.classList.add('tree__expand--plus');
       }
-      e.target.parentNode.nextSibling.classList.toggle('hidden');
+      e.target.parentNode.nextSibling.classList.toggle('tree__hidden');
     });
-
 
     const arrItems = [].slice.call(this.container.querySelectorAll('.tree__item'));
     arrItems.map((item, i) => {
       arrItems[i].style.paddingLeft = this.getPadding(item);
     });
 
-    const spirit = document.documentElement.querySelector('.tree__item');
-    this.createChildItem(spirit, 'bla-bla');
+    this.container.addEventListener('click', (e) => {
+      const target = e.target;
+      if(!target.classList.contains('tree__add')) return;
+      const item = target.closest('.tree__item');
+      const name = prompt('Имя нового элемента');
+      this.createChildItem(item, name);
+    });
   }
 
   getPadding(item) {
