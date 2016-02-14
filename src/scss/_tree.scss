@@ -44,6 +44,7 @@
 
   &__content {
       display: inline-block;
+      margin-right: 10px;
       line-height: 28px;
       vertical-align: middle;
   }
@@ -56,7 +57,7 @@
     right: -5px;
     top: 2px;
     border-radius: 6px 0 0 6px;
-    transform: translateX(68px);
+    transform: translateX(66px);
     transition: all 0.3s;
 
     &:hover {

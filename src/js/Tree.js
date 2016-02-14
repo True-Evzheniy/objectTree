@@ -91,6 +91,13 @@ export default class Tree {
       const item = target.closest('.tree__item');
       this.deleteElem(item);
     });
+
+    this.container.addEventListener('click', (e) => {
+      const target = e.target;
+      if(!target.classList.contains('tree__edit')) return;
+      const item = target.closest('.tree__item');
+      this.editElem(item);
+    });
   }
 
   getPadding(item) {
@@ -126,6 +133,10 @@ export default class Tree {
     } else {
       elem.parentNode.remove();
     }
+  }
 
+  editElem(elem) {
+    const content = elem.children[1];
+    content.innerHTML = prompt('Новое имя элемента');
   }
 }
