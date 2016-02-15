@@ -66,15 +66,16 @@ export default class Tree {
     }
 
     this.container.addEventListener('click', (e) => {
-      if(!e.target.classList.contains('tree__expand') || !e.target.parentNode.nextSibling) return;
-      if(e.target.classList.contains('tree__expand--plus')) {
-        e.target.classList.remove('tree__expand--plus');
-        e.target.classList.add('tree__expand--minus');
+      const target = e.target;
+      if(!target.classList.contains('tree__expand') || !target.parentNode.nextSibling) return;
+      if(target.classList.contains('tree__expand--plus')) {
+        target.classList.remove('tree__expand--plus');
+        target.classList.add('tree__expand--minus');
       } else {
-        e.target.classList.remove('tree__expand--minus');
-        e.target.classList.add('tree__expand--plus');
+        target.classList.remove('tree__expand--minus');
+        target.classList.add('tree__expand--plus');
       }
-      e.target.parentNode.nextSibling.classList.toggle('tree__hidden');
+      target.parentNode.nextSibling.classList.toggle('tree__hidden');
       this.updateLs();
     });
 
