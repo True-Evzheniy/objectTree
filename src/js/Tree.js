@@ -83,6 +83,8 @@ export default class Tree {
       arrItems[i].style.paddingLeft = this.getPadding(item);
     });
 
+    document.querySelector('.tree__rm').remove();
+
     this.container.addEventListener('click', (e) => {
       const target = e.target;
       if(!target.classList.contains('tree__add')) return;
